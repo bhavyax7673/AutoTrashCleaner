@@ -7,15 +7,19 @@ from time import sleep
 
 folder = "./"
 
-all_files_list = os.listdir(folder) # put the location of folder you wanna use as a trash bin
-print("All Files To Be Delete :- \n")
-found = False
+while True:
+    all_files_list = os.listdir(folder) # put the location of folder you wanna use as a trash bin
+    print("All Files To Be Delete :- \n")
+    found = False
 
-for file_name in all_files_list:
-    if file_name not in ["README.md",".git","main.py"]:
-        found = True
-        os.remove(file_name)
-        print(f"{file_name}\n")
+    for file_name in all_files_list:
+        if file_name not in ["README.md",".git","main.py"]:
+            found = True
+            os.remove(file_name)
+            print(f"{file_name}\n")
 
-winshell.recycle_bin().empty(True,True,True)
-print("Files Deleted Successfully")
+    winshell.recycle_bin().empty(True,True,True)
+    print("Files Deleted Successfully")
+
+    sleep(60*60*12)
+    

@@ -4,7 +4,7 @@
 import winshell
 import os
 from time import sleep
-
+from shutil import rmtree
 folder = "./"
 
 while True:
@@ -14,12 +14,16 @@ while True:
 
     for file_name in all_files_list:
         if file_name not in ["README.md",".git","main.py"]:
-            found = True
-            os.remove(file_name)
+            if os.path.isfile(file_name):
+
+                found = True
+                os.remove(file_name)
+            else:
+                rmtree(file_name)
+                
             print(f"{file_name}\n")
 
     winshell.recycle_bin().empty(True,True,True)
     print("Files Deleted Successfully")
 
-    sleep(60*60*12)
-    
+    sleep(60)
